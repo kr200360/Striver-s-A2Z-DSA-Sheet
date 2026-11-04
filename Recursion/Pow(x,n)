@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Pow(x,n) {
+
+    public static double myPow(double x, int n) {
+
+        long power = n;
+
+        // Handle negative exponent
+        if (power < 0) {
+            x = 1 / x;
+            power = -power;
+        }
+
+        return calculate(x, power);
+    }
+
+    public static double calculate(double x, long n) {
+
+        // Base case
+        if (n == 0) {
+            return 1.0;
+        }
+
+        // Recursive call
+        double half = calculate(x, n / 2);
+
+        // Even exponent
+        if (n % 2 == 0) {
+            return half * half;
+        }
+
+        // Odd exponent
+        return half * half * x;
+    }
+
+    public static void main(String[] args) {
+
+        double x = 2.0000;
+        int n = -2;
+
+        double result = myPow(x, n);
+
+        System.out.printf("%.6f%n", result);
+    }
+}
